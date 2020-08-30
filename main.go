@@ -8,12 +8,9 @@ import (
 	"github.com/Ken2mer/echo-mvc/config"
 )
 
-var (
-	// set postgres url
-	dbURL = ""
-)
-
 func run() int {
+	dbURL := os.Getenv("DB_URL")
+
 	if err := app.OpenDB(dbURL); err != nil {
 		fmt.Println(err)
 		return 1
