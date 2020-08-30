@@ -13,10 +13,8 @@ func hello(c echo.Context) error {
 	return c.String(http.StatusOK, fmt.Sprintf("Hello, %q", html.EscapeString(c.Path())))
 }
 
-func Routes() *echo.Echo {
-	e := echo.New()
+func Routes(e *echo.Echo) {
 	e.GET("/", hello)
 	e.GET("/users", controller.Users)
 	e.POST("/users", controller.CreateUser)
-	return e
 }

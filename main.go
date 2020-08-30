@@ -6,6 +6,7 @@ import (
 
 	"github.com/Ken2mer/echo-mvc/app"
 	"github.com/Ken2mer/echo-mvc/config"
+	"github.com/labstack/echo"
 )
 
 func run() int {
@@ -17,7 +18,10 @@ func run() int {
 	}
 	defer app.CloseDB()
 
-	e := config.Routes()
+	e := echo.New()
+
+	config.Middlewares(e)
+	config.Routes(e)
 
 	if err := app.RunServer(e); err != nil {
 		fmt.Println(err)
