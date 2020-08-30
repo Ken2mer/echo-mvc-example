@@ -20,5 +20,5 @@ func CreateUser(c echo.Context) (err error) {
 		return
 	}
 	app.DB.Create(&user)
-	return c.JSON(http.StatusOK, user)
+	return c.JSON(http.StatusCreated, user)
 }
